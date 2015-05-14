@@ -119,6 +119,14 @@ def autoreduce(speclist, flatlist='', biaslist='', HeNeAr_file='',
         fmask_out = (1,)
 
 
+
+
+
+
+    #something here will definately change or be added: 
+
+
+
     if HeNeAr_prev is False:
         prev = ''
     else:
@@ -130,6 +138,44 @@ def autoreduce(speclist, flatlist='', biaslist='', HeNeAr_file='',
                                 interac=HeNeAr_interac, previous=prev,mode='poly',
                                 display=display_HeNeAr, tol=HeNeAr_tol,
                                 fit_order=HeNeAr_order)
+'''
+  HeNeAr_interac : bool, optional
+        Should the HeNeAr identification be done interactively (manually)?
+        (Default here is False)
+    HeNeAr_tol : int, optional
+        When in automatic mode, the tolerance in pixel units between
+        linelist entries and estimated wavelengths for the first few
+        lines matched... use carefully. (Default here is 20)
+    HeNeAr_order : int, optional
+        The polynomial order to use to interpolate between identified
+        peaks in the HeNeAr (Default is 2)
+    display_HeNeAr : bool, optional
+    
+    
+    
+
+Reduction script for multiple HeNeAr frames #28 
+
+Assuming the wavelength solution doesn't change much over the night, but a careful observer has taken multiple lamp images to ensure the best possible velocities can be measured:
+
+    Create whole new reduction script in wrappers.py
+    Use a full solution for first HeNeAr, as normally done
+    From the first solution, cheat and solve the n'th HeNeAr image, use line positions and small tolerances (?)
+    instead of list of images and 1 HeNeAr, hand either a 2-column list or 2 lists, which indicates which HeNeAr should be solved for each image.
+    write up short explanation on the repo wiki
+
+
+I can try this one!! 
+
+    
+
+
+
+'''
+
+
+
+
 
 
     # read in the list of target spectra
@@ -182,11 +228,30 @@ def autoreduce(speclist, flatlist='', biaslist='', HeNeAr_file='',
             plt.show()
 
 
+
+
+
+
+
+    #henear fit here! !!! Add other image mapping aferwards?  
+    # assume each HeNeAr line found very carefully in the first image only moves slightly in the wavelength direction, 
+    #so maybe just look for local max +/- 5 or 10 pixels from initial positions?
+
+
         if (len(HeNeAr_file) > 0):
             wfinal = pydis.mapwavelength(trace, wfit, mode='poly')
         else:
             # if no line lamp given, use approx from the img header
             wfinal = wapprox
+
+
+
+
+
+
+
+
+
 
         # plt.figure()
         # plt.plot(wfinal,'r')
