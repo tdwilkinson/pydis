@@ -282,6 +282,13 @@ def ReduceCoAdd(speclist, flatlist, biaslist, HeNeAr_file,
     
     
     
+    
+    
+    
+    
+    
+    
+    
     # Going to need to add in something HERE for that multi henear stuffs!    
     if HeNeAr_prev is False:
         prev = ''
@@ -290,6 +297,19 @@ def ReduceCoAdd(speclist, flatlist, biaslist, HeNeAr_file,
     wfit = pydis.HeNeAr_fit(HeNeAr_file, trim=trim, fmask=fmask_out, interac=HeNeAr_interac,
                       previous=prev,mode='poly',
                       display=displayHeNeAr, tol=HeNeAr_tol, fit_order=HeNeAr_order)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     #-- the standard star, set the stage
     specfile = np.loadtxt(speclist,dtype='string')
