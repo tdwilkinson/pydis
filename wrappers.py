@@ -279,6 +279,10 @@ def ReduceCoAdd(speclist, flatlist, biaslist, HeNeAr_file,
     bias = pydis.biascombine(biaslist, trim=trim)
     flat,fmask_out = pydis.flatcombine(flatlist, bias, trim=trim, mode=flat_mode,display=False,
                                  flat_poly=flat_order, response=flat_response)
+    
+    
+    
+    # Going to need to add in something HERE for that multi henear stuffs!    
     if HeNeAr_prev is False:
         prev = ''
     else:
